@@ -9,12 +9,49 @@
 </head>
 
 <body>
-    <script src="app.js"></script>
-    <header></header>
+    <header>
+
+    </header>
     <main>
+
+        <!-- from section  -->
+        <section>
+            <fieldset>
+                <form id="formID">
+                    <label for="fullname">Full name:</label><br>
+                    <input type="text" id="fullname" name="fullname"><br><br>
+
+                    <label for="department">Department :</label><br>
+                    <select name="department" id="department" ,value="department">
+                        <option value="administration">Administration</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="development">Development</option>
+                        <option value="finance">Finance</option>
+                    </select><br><br>
+
+
+                    <label for="level">Level :</label><br>
+                    <select name="level" id="level" ,value="level">
+                        <option value="junior">Junior</option>
+                        <option value="mid-Senior">Mid-Senior</option>
+                        <option value="senior">Senior</option>
+                    </select><br><br>
+
+                    <label for="image">Image link:</label><br>
+                    <input type="text" id="image" name="image"><br><br>
+
+                    <input type="submit" value="submit">
+
+
+                </form>
+            </fieldset>
+        </section>
+        <!-- cards section -->
+        <section class="card" id="cardSection"></section>
 
     </main>
     <footer></footer>
+    <script src="app.js"></script>
 </body>
 
 </html>
