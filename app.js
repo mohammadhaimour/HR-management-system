@@ -55,6 +55,7 @@ Employee.prototype.render = function () {
 
     let name = document.createElement("h2");
     name.textContent = `Name : ${this.FullName} -`;
+    name.style.color = "red";
     sectionEl.appendChild(name);
 
     let Id = document.createElement("p")
