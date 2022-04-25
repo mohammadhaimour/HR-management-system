@@ -3,7 +3,7 @@
 
 let formEl = document.getElementById("formID");
 let sectionEl = document.getElementById("cardSection");
-
+let tableEl = document.getElementById("tableID");
 let allEmployee = [];
 
 
@@ -88,6 +88,17 @@ Employee.prototype.render = function () {
 }
 
 
+// Drink.prototype.renderTable = function () {
+//     let tr = document.createElement("tr");
+//     tableEl.appendChild(tr);
+
+//     let nameTd = document.createElement("td");
+//     nameTd.textContent = this.Department;
+//     tr.appendChild(nameTd);
+
+
+// }
+
 
 let emp1 = new Employee(1000, "Ghazi Samer", "Administration", "Senior", "assets/Ghazi.jpg");
 let emp2 = new Employee(1001, "Lana Ali", "Finance", "Senior", "assets/Lana.jpg");
@@ -98,12 +109,14 @@ let emp6 = new Employee(1005, "Rana Salah", "Development", "Junior", "assets/Ran
 let emp7 = new Employee(1006, "Hadi Ahmad", "Finace", "Mid-Senior", "assets/Hadi.jpg");
 
 
-for (let i = 0; i < allEmployee.length; i++) {
-    allEmployee[i].calcSalary();
-    allEmployee[i].render();
+
+function renderAll() {
+    for (let i = 0; i < allEmployee.length; i++) {
+        allEmployee[i].calcSalary();
+        allEmployee[i].render();
+        // allEmployee[i].renderTable();
+    }
 }
-
-
 
 
 // emp1.calcSalary();
@@ -148,9 +161,31 @@ function handleSubmit(event) {
     console.log(image);
     let newEmp = new Employee(1007, fullname, department, level, image);
     newEmp.render();
+    saveData(allEmployee);
 
 }
 
+
+// local storage:
+function saveData(data) {
+    console.log(data);
+    let stringfiyData = JSON.stringify(data);
+    localStorage.setItem("Emplooyes", stringfiyData);
+}
+
+function getData() {
+    let retrievedData = localStorage.getItem("Emplooyes");
+    let arrayData = JSON.parse(retrievedData);
+    if (arrayData != null) {
+        for (let i = 0; i < arrayData.length; i++) {
+
+            new Employee(arrayData[i].EmployeeID, arrayData[i].FullName, arrayData[i].Department, arrayData[i].Level, arrayData[i].ImageURL, arrayData[i].Salary);
+
+        }
+    }
+    renderAll();
+}
+getData();
 
 
 
